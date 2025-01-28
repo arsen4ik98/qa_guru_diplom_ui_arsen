@@ -10,8 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-//import static io.opentelemetry.semconv.trace.attributes.SemanticAttributes.EventDomainValues.BROWSER;
-import static org.openqa.selenium.logging.LogType.BROWSER;
+import static io.opentelemetry.semconv.trace.attributes.SemanticAttributes.EventDomainValues.BROWSER;
 
 public class Attach {
 

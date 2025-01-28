@@ -6,14 +6,9 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.CollectionCondition;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import testdata.Attach;
-
 import java.util.Map;
-
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -56,6 +51,7 @@ public class TestsSoftportal {
     @Test
     @Tag("softportal_test")
     void checkMainPageLoads() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть главную страницу", () ->
                 open("/")
         );
@@ -65,8 +61,8 @@ public class TestsSoftportal {
         step("Кликнуть на кнопку 'Поиск'", () ->
                 $("[alt='Искать']").click()
         );
-        step("Кликнуть на кнопку 'Поиск'", () ->
-                $$("a").filterBy(text("Google Chrome")).first()
+        step("Поиск корректной проверки'", () ->
+                $(".searchResults").shouldHave(text("Google Chrome – один из самых популярных браузеров"))
         );
         Attach.addVideo();
         Attach.makeScreenshot();
