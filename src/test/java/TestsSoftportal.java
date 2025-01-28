@@ -59,6 +59,7 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
+        Configuration.timeout=10000;
             step("Убрать Баннер", () ->
                     $(".fc-button-label").click()
             );
@@ -87,6 +88,7 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
+        Configuration.timeout=10000;
         step("Убрать Баннер", () ->
                 $(".fc-button-label").click()
         );
@@ -111,6 +113,7 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
+        Configuration.timeout=10000;
             step("Убрать Баннер", () ->
                     $(".fc-button-label").click()
             );
