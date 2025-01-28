@@ -93,10 +93,10 @@ public class TestsSoftportal {
                 $(".fc-button-label").click()
         );
         step("Перейти на категорию 'Android'", () ->
-                $$(".geo18").findBy(text("Android")).click()
+                $$(".TdLCatTitle").findBy(text("Android")).click()
         );
         step("Поиск корректной проверки'", () ->
-                $(".titleH geo18").shouldHave(text("Программы для Android"))
+                $(".geo18").shouldHave(text("Программы для Android"))
         );
         Attach.addVideo();
         Attach.makeScreenshot();
