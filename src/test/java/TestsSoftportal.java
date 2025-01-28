@@ -8,7 +8,11 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import testdata.Attach;
+
+import java.time.Duration;
 import java.util.Map;
+
+import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -50,7 +54,7 @@ public class TestsSoftportal {
 
     @Test
     @Tag("softportal_test")
-    void checkMainPageLoads() {
+    void checkSearch() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть главную страницу", () ->
                 open("/")
@@ -70,6 +74,46 @@ public class TestsSoftportal {
         Attach.browserConsoleLogs();
         System.out.println("Remote URL: " + config.remote());
     }
+
+    @Test
+    @Tag("softportal_test")
+    void checkCategoryAndroid() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        step("Открыть главную страницу", () ->
+                open("/")
+        );
+        step("Перейти на категорию 'Android'", () ->
+                $$(".TdLCatTitle").findBy(text("Android")).click()
+        );
+        step("Поиск корректной проверки'", () ->
+                $(".titleH geo18").shouldHave(text("Программы для Android"))
+        );
+        //Attach.addVideo();
+        //Attach.makeScreenshot();
+        //Attach.pageSource();
+        //Attach.browserConsoleLogs();
+        System.out.println("Remote URL: " + config.remote());
+    }
+
+    @Test
+    @Tag("softportal_test")
+    void checkPopularSize() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        step("Открыть главную страницу", () ->
+                open()
+        );
+        step("Поиск корректной проверки'", () ->
+                $$("div.rightContainerLinks > div").shouldHave(size(20), Duration.ofSeconds(10))
+        );
+        //Attach.addVideo();
+       // Attach.makeScreenshot();
+        //Attach.pageSource();
+       // Attach.browserConsoleLogs();
+        System.out.println("Remote URL: " + config.remote());
+    }
+
+
+
 
 
 
