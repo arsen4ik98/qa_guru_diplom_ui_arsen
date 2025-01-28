@@ -59,9 +59,11 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-        step("Убрать Баннер", () ->
-                $(".fc-button-label").click()
-        );
+        if ($(".fc-button-label").exists()) {
+            step("Убрать Баннер", () ->
+                    $(".fc-button-label").click()
+            );
+        }
         step("Проверить наличие заголовка 'SoftPortal'", () ->
                 $("#str").setValue("Google Chrome")
         );
@@ -85,19 +87,21 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-        step("Убрать Баннер", () ->
-                $(".fc-button-label").click()
-        );
+        if ($(".fc-button-label").exists()) {
+            step("Убрать Баннер", () ->
+                    $(".fc-button-label").click()
+            );
+        }
         step("Перейти на категорию 'Android'", () ->
                 $$(".TdLCatTitle").findBy(text("Android")).click()
         );
         step("Поиск корректной проверки'", () ->
                 $(".titleH geo18").shouldHave(text("Программы для Android"))
         );
-        //Attach.addVideo();
-        //Attach.makeScreenshot();
-        //Attach.pageSource();
-        //Attach.browserConsoleLogs();
+        Attach.addVideo();
+        Attach.makeScreenshot();
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
         System.out.println("Remote URL: " + config.remote());
     }
 
@@ -108,9 +112,11 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-        step("Убрать Баннер", () ->
-                $(".fc-button-label").click()
-        );
+        if ($(".fc-button-label").exists()) {
+            step("Убрать Баннер", () ->
+                    $(".fc-button-label").click()
+            );
+        }
         step("Поиск корректной проверки'", () ->
                 $$("div.rightContainerLinks > div").shouldHave(size(20), Duration.ofSeconds(10))
         );
