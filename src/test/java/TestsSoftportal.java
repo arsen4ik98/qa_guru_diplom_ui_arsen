@@ -1,8 +1,8 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-//import config.CredentialsConfig;
+import config.CredentialsConfig;
 import io.qameta.allure.selenide.AllureSelenide;
-//import org.aeonbits.owner.ConfigFactory;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -20,22 +20,22 @@ import static io.qameta.allure.Allure.step;
 
 public class TestsSoftportal {
 
-    /*static CredentialsConfig config;
+    static CredentialsConfig config;
 
-     */
+
     @BeforeAll
     static void beforeAll() {
-        /*
+
         config = ConfigFactory.create(CredentialsConfig.class);
         String browserVersion = System.getProperty("version", "126.0");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         String remoteUrl = System.getProperty("remoteBrowserUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
-         */
+
         Configuration.baseUrl = "https://www.softportal.com/";
         Configuration.pageLoadStrategy = "eager";
-        /*Configuration.remote = remoteUrl;
+        Configuration.remote = remoteUrl;
         Configuration.browserVersion = browserVersion;
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -50,10 +50,10 @@ public class TestsSoftportal {
         System.out.println("Browser version: " + Configuration.browserVersion);
         System.out.println("Window size: " + Configuration.browserSize);
 
-         */
+
     }
 
-    /*@Test
+    @Test
     @Tag("softportal_test")
     void checkMainPageLoads() {
         step("Открыть главную страницу", () ->
@@ -72,18 +72,11 @@ public class TestsSoftportal {
         Attach.makeScreenshot();
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        //System.out.println("Remote URL: " + config.remote());
+        System.out.println("Remote URL: " + config.remote());
     }
 
-     */
-    @Test
-    void successfulSearchTest() {
-        Configuration.pageLoadStrategy = "eager";
 
-        open("https://www.google.com/");
-        $("[name=q]").setValue("selenide").pressEnter();
-        $("[id=search]").shouldHave(text("ru.selenide.org"));
-    }
+
 }
 
 
