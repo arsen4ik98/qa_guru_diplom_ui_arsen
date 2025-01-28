@@ -59,11 +59,10 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-        if ($(".fc-button-label").exists()) {
             step("Убрать Баннер", () ->
                     $(".fc-button-label").click()
             );
-        }
+
         step("Проверить наличие заголовка 'SoftPortal'", () ->
                 $("#str").setValue("Google Chrome")
         );
@@ -78,6 +77,7 @@ public class TestsSoftportal {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         System.out.println("Remote URL: " + config.remote());
+        closeWebDriver();
     }
 
     @Test
@@ -87,11 +87,9 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-        if ($(".fc-button-label").exists()) {
-            step("Убрать Баннер", () ->
-                    $(".fc-button-label").click()
-            );
-        }
+        step("Убрать Баннер", () ->
+                $(".fc-button-label").click()
+        );
         step("Перейти на категорию 'Android'", () ->
                 $$(".TdLCatTitle").findBy(text("Android")).click()
         );
@@ -103,6 +101,7 @@ public class TestsSoftportal {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         System.out.println("Remote URL: " + config.remote());
+        closeWebDriver();
     }
 
     @Test
@@ -112,11 +111,10 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-        if ($(".fc-button-label").exists()) {
             step("Убрать Баннер", () ->
                     $(".fc-button-label").click()
             );
-        }
+
         step("Поиск корректной проверки'", () ->
                 $$("div.rightContainerLinks > div").shouldHave(size(20), Duration.ofSeconds(10))
         );
@@ -125,6 +123,7 @@ public class TestsSoftportal {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         System.out.println("Remote URL: " + config.remote());
+        closeWebDriver();
     }
 
 
