@@ -83,7 +83,7 @@ public class TestsSoftportal {
     void checkCategoryAndroid() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть главную страницу", () ->
-                open()
+                open("/")
         );
         step("Убрать Баннер", () ->
                 $(".fc-button-label").click()
@@ -94,10 +94,10 @@ public class TestsSoftportal {
         step("Поиск корректной проверки'", () ->
                 $(".titleH geo18").shouldHave(text("Программы для Android"))
         );
-        Attach.addVideo();
-        Attach.makeScreenshot();
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
+        //Attach.addVideo();
+        //Attach.makeScreenshot();
+        //Attach.pageSource();
+        //Attach.browserConsoleLogs();
         System.out.println("Remote URL: " + config.remote());
     }
 
@@ -106,7 +106,7 @@ public class TestsSoftportal {
     void checkPopularSize() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть главную страницу", () ->
-                open()
+                open("/")
         );
         step("Убрать Баннер", () ->
                 $(".fc-button-label").click()
