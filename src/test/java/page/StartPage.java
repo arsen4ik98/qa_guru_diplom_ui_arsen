@@ -1,5 +1,7 @@
 package page;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -8,8 +10,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class StartPage {
 
-    private SelenideElement vacancy = $(".fs-5 a"),
-            headerMenu = $(".text-end.d-flex.align-items-center a img");
+    private ElementsCollection vacancy = $$(".container-fluid a");
+    private SelenideElement  headerMenu = $(".text-end.d-flex.align-items-center a img");
 
     @Step("Открываем сайт BellIntegrator")
     public StartPage openPage() {
@@ -19,7 +21,9 @@ public class StartPage {
 
     @Step("Переходим на вкладку \"Вакансии\"")
     public StartPage clickVacancy() {
-        vacancy.find(byText("Вакансии")).click();
+        vacancy.findBy(Condition.text("Вакансии")).scrollTo();
+        sleep(1000);
+        vacancy.findBy(Condition.text("Вакансии")).click();
         return this;
     }
 
