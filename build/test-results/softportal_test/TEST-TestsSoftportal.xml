@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestsSoftportal" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-01-28T14:22:35" hostname="DESKTOP-R3NI2IO" time="11.746">
+<testsuite name="TestsSoftportal" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-01-29T12:41:21" hostname="DESKTOP-R3NI2IO" time="25.153">
   <properties/>
-  <testcase name="checkCategoryAndroid()" classname="TestsSoftportal" time="11.746">
-    <failure message="Element not found {.TdLCatTitle.findBy(text &quot;Android&quot;)}&#13;&#10;Expected: clickable: interactable and enabled&#13;&#10;Screenshot: file:/D:/qa_guru_hw14/build/reports/tests/1738074166864.0.png&#13;&#10;Page source: file:/D:/qa_guru_hw14/build/reports/tests/1738074166864.0.html&#13;&#10;Timeout: 4 s.&#13;&#10;Caused by: NoSuchElementException: Cannot locate an element .TdLCatTitle.findBy(text &quot;Android&quot;)" type="com.codeborne.selenide.ex.ElementNotFound">Element not found {.TdLCatTitle.findBy(text &quot;Android&quot;)}
-Expected: clickable: interactable and enabled
-Screenshot: file:/D:/qa_guru_hw14/build/reports/tests/1738074166864.0.png
-Page source: file:/D:/qa_guru_hw14/build/reports/tests/1738074166864.0.html
-Timeout: 4 s.
-Caused by: NoSuchElementException: Cannot locate an element .TdLCatTitle.findBy(text &quot;Android&quot;)
-	at app//com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:91)
-	at app//com.codeborne.selenide.impl.WebElementSource.handleError(WebElementSource.java:143)
+  <testcase name="checkCategoryAndroid()" classname="TestsSoftportal" time="25.153">
+    <failure message="Element should be editable {.search_field}&#13;&#10;Element: '&lt;input autocomplete=&quot;off&quot; class=&quot;search_field&quot; name=&quot;wg_q&quot; placeholder=&quot;Чемпион, Призыватель...&quot; spellcheck=&quot;false&quot; type=&quot;text&quot; displayed:false&gt;&lt;/input&gt;'&#13;&#10;Actual value: hidden, opacity=1&#13;&#10;Screenshot: file:/D:/qa_guru_hw14/build/reports/tests/1738154501429.0.png&#13;&#10;Page source: file:/D:/qa_guru_hw14/build/reports/tests/1738154501429.0.html&#13;&#10;Timeout: 10 s." type="com.codeborne.selenide.ex.ElementShould">Element should be editable {.search_field}
+Element: '&lt;input autocomplete=&quot;off&quot; class=&quot;search_field&quot; name=&quot;wg_q&quot; placeholder=&quot;Чемпион, Призыватель...&quot; spellcheck=&quot;false&quot; type=&quot;text&quot; displayed:false&gt;&lt;/input&gt;'
+Actual value: hidden, opacity=1
+Screenshot: file:/D:/qa_guru_hw14/build/reports/tests/1738154501429.0.png
+Page source: file:/D:/qa_guru_hw14/build/reports/tests/1738154501429.0.html
+Timeout: 10 s.
+	at app//com.codeborne.selenide.impl.WebElementSource.handleError(WebElementSource.java:149)
 	at app//com.codeborne.selenide.impl.WebElementSource.checkConditionAndReturnElement(WebElementSource.java:127)
-	at app//com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsClickable(WebElementSource.java:173)
-	at app//com.codeborne.selenide.commands.Click.findElement(Click.java:46)
-	at app//com.codeborne.selenide.commands.Click.execute(Click.java:28)
-	at app//com.codeborne.selenide.commands.Click.execute(Click.java:21)
+	at app//com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsEditable(WebElementSource.java:184)
+	at app//com.codeborne.selenide.commands.SetValue.setValueForTextInput(SetValue.java:58)
+	at app//com.codeborne.selenide.commands.SetValue.execute(SetValue.java:43)
+	at app//com.codeborne.selenide.commands.SetValue.execute(SetValue.java:25)
 	at app//com.codeborne.selenide.commands.Commands.execute(Commands.java:165)
 	at app//com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:132)
 	at app//com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:84)
-	at app/jdk.proxy3/jdk.proxy3.$Proxy22.click(Unknown Source)
-	at app//TestsSoftportal.lambda$checkCategoryAndroid$6(TestsSoftportal.java:90)
-	at app//io.qameta.allure.Allure.lambda$step$0(Allure.java:113)
+	at app/jdk.proxy3/jdk.proxy3.$Proxy19.setValue(Unknown Source)
+	at app//TestsSoftportal.lambda$checkCategoryAndroid$6(TestsSoftportal.java:115)
 	at app//io.qameta.allure.Allure.lambda$step$1(Allure.java:127)
 	at app//io.qameta.allure.Allure.step(Allure.java:181)
 	at app//io.qameta.allure.Allure.step(Allure.java:125)
-	at app//io.qameta.allure.Allure.step(Allure.java:112)
-	at app//TestsSoftportal.checkCategoryAndroid(TestsSoftportal.java:89)
+	at app//TestsSoftportal.checkCategoryAndroid(TestsSoftportal.java:113)
 	at java.base@23.0.1/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base@23.0.1/java.util.ArrayList.forEach(ArrayList.java:1597)
 	at java.base@23.0.1/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element .TdLCatTitle.findBy(text &quot;Android&quot;)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.13.0', revision: 'ba948ece5b*'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
-Driver info: driver.version: unknown
-	at app//com.codeborne.selenide.impl.CollectionElementByCondition.getWebElement(CollectionElementByCondition.java:55)
-	at app//com.codeborne.selenide.impl.WebElementSource.checkConditionAndReturnElement(WebElementSource.java:116)
-	... 18 more
 </failure>
   </testcase>
   <system-out><![CDATA[Remote URL: https://user1:1234@selenoid.autotests.cloud/wd/hub
@@ -44,12 +33,8 @@ Browser: chrome
 Browser version: 126.0
 Window size: 1920x1080
 ]]></system-out>
-  <system-err><![CDATA[[Test worker] INFO com.codeborne.selenide.impl.WebDriverThreadLocalContainer - No webdriver is bound to current thread: 1 - let's create a new webdriver
-[Test worker] INFO com.codeborne.selenide.webdriver.WebDriverFactory - BrowserName=chrome Version=126.0.6478.126 Platform=linux
-[Test worker] INFO com.codeborne.selenide.webdriver.WebDriverFactory - Selenide v. 6.19.1
-[Test worker] INFO com.codeborne.selenide.webdriver.WebDriverFactory - Selenium WebDriver v. 4.13.0 build revision: ba948ece5b*
-[Test worker] INFO com.codeborne.selenide.drivercommands.CreateDriverCommand - Created webdriver in thread 1: RemoteWebDriver -> RemoteWebDriver: chrome on linux (5fc83b0832038b36d3f10565f4148c26)
-[Test worker] INFO com.codeborne.selenide.drivercommands.DisposablesRegistry - Register WebDriverInstance[config=StaticConfig,webDriver=RemoteWebDriver: chrome on linux (5fc83b0832038b36d3f10565f4148c26),proxy=null,downloadsFolder=null] in 1 [size=1]
-[Test worker] INFO com.codeborne.selenide.drivercommands.DisposablesRegistry - Add shutdown hook in 1 [size=1]
+  <system-err><![CDATA[[Test worker] INFO com.codeborne.selenide.drivercommands.CloseDriverCommand - Close webdriver: 1 -> RemoteWebDriver: chrome on linux (87c0a7e62897bee51e2497d235405e04)...
+[Test worker] INFO com.codeborne.selenide.drivercommands.CloseDriverCommand - Closed webdriver 1 in 236 ms
+[Test worker] INFO com.codeborne.selenide.drivercommands.DisposablesRegistry - Unregister WebDriverInstance[config=StaticConfig,webDriver=RemoteWebDriver: chrome on linux (null),proxy=null,downloadsFolder=null] in 1 [size=0]
 ]]></system-err>
 </testsuite>

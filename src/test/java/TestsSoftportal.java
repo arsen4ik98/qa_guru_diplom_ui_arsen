@@ -11,7 +11,6 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -22,7 +21,6 @@ public class TestsSoftportal {
 
     static CredentialsConfig config;
     static ExecutorService executor;
-
     @BeforeAll
     static void beforeAll() {
         config = ConfigFactory.create(CredentialsConfig.class);
@@ -31,11 +29,24 @@ public class TestsSoftportal {
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         String remoteUrl = System.getProperty("remoteBrowserUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
-        Configuration.baseUrl = "https://www.softportal.com";
+        //Configuration.baseUrl = "https://www.softportal.com";
+        Configuration.baseUrl = "https://www.leagueofgraphs.com/ru";
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote = remoteUrl;
         Configuration.browserVersion = browserVersion;
         Configuration.timeout = 10000;
+
+        executor = Executors.newSingleThreadExecutor();
+        executor.submit(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    closePrivacyPopup(); // Закрываем баннер "Manage your privacy"
+                    Thread.sleep(1000); // Проверяем каждую секунду
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -48,50 +59,24 @@ public class TestsSoftportal {
         System.out.println("Browser: " + Configuration.browser);
         System.out.println("Browser version: " + Configuration.browserVersion);
         System.out.println("Window size: " + Configuration.browserSize);
-
-        // Запускаем фоновый поток для автоматического закрытия баннера
-        executor = Executors.newSingleThreadExecutor();
-        executor.submit(() -> {
-            while (!Thread.currentThread().isInterrupted()) {
-                try {
-                    closeBannerIfPresent();  // Закрываем баннер
-                    Thread.sleep(1000);  // Проверяем каждую секунду
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-        });
-    }
-
-    @BeforeEach
-    void setUp() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
-        // Перехватываем все клики и действия, чтобы сразу закрывать баннер
-        Configuration.reportsFolder = "target/surefire-reports";
-    }
-
-    @AfterEach
-    void afterEach() {
-        closeBannerIfPresent();  // Закрываем баннер в конце каждого теста
     }
 
     @AfterAll
     static void tearDown() {
         if (executor != null) {
-            executor.shutdownNow(); // Останавливаем поток после тестов
+            executor.shutdownNow(); // Останавливаем поток
         }
         closeWebDriver();
     }
 
-    public static void closeBannerIfPresent() {
+    public static void closePrivacyPopup() {
         try {
-            if ($(".fc-button-label").shouldBe(visible, Duration.ofSeconds(1)).exists()) {
-                $(".fc-button-label").click();
-                System.out.println("✅ Баннер закрыт.");
+            if ($("div[role='dialog']").shouldBe(visible, Duration.ofSeconds(1)).exists()) {
+                $("button:contains('Accept All'), button:contains('Got it'), button:contains('Принять')").click();
+                System.out.println("✅ Закрыли баннер 'Manage your privacy'.");
             }
         } catch (Exception e) {
-            // Баннер отсутствует — ничего не делаем
+            // Баннер не найден — продолжаем тест
         }
     }
 
@@ -102,7 +87,6 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-
         step("Проверить наличие заголовка 'SoftPortal'", () ->
                 $("#str").setValue("Google Chrome")
         );
@@ -126,12 +110,17 @@ public class TestsSoftportal {
         step("Открыть главную страницу", () ->
                 open("/")
         );
-
         step("Перейти на категорию 'Android'", () ->
-                $$(".TdLCatTitle").findBy(text("Android")).click()
+                //$$(".TdLCatTitle").findBy(text("Android")).click()
+                $(".search_field").setValue("ShadowSensey")
         );
         step("Поиск корректной проверки'", () ->
-                $(".titleH geo18").shouldHave(text("Программы для Android"))
+                //$("titleH geo18").shouldHave(text("Программы для Android"))
+                $(".search_button").click()
+        );
+        step("Поиск корректной проверки'", () ->
+                //$("titleH geo18").shouldHave(text("Программы для Android"))
+                $(".name").shouldHave(text("ShadowSensey"))
         );
         Attach.addVideo();
         Attach.makeScreenshot();
