@@ -54,7 +54,7 @@ public class TestsSoftportal {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
                     closeBannerIfPresent();
-                    Thread.sleep(2000); // Проверять каждые 2 секунды
+                    Thread.sleep(200); // Проверять каждые 2 секунды
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
