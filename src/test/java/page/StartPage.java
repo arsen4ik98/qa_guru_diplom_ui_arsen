@@ -4,12 +4,11 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class StartPage {
 
-    private SelenideElement vacancy = $(".btn-danger"),
+    private SelenideElement vacancy = $(".fs-5 a"),
             headerMenu = $(".text-end.d-flex.align-items-center a img");
 
     @Step("Открываем сайт BellIntegrator")
@@ -20,7 +19,7 @@ public class StartPage {
 
     @Step("Переходим на вкладку \"Вакансии\"")
     public StartPage clickVacancy() {
-        vacancy.$(byText("Вакансии")).click();
+        vacancy.find(byText("Вакансии")).click();
         return this;
     }
 
