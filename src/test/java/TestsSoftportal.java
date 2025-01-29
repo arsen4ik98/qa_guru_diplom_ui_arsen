@@ -14,6 +14,7 @@ import java.util.concurrent.Executors;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -53,13 +54,26 @@ public class TestsSoftportal {
         executor.submit(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
-                    closeBannerIfPresent();
-                    Thread.sleep(200); // Проверять каждые 2 секунды
+                    closeBannerIfPresent();  // Закрываем баннер
+                    Thread.sleep(1000);  // Проверяем каждую секунду
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
             }
         });
+    }
+
+    @BeforeEach
+    void setUp() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        // Перехватываем все клики и действия, чтобы сразу закрывать баннер
+        Configuration.reportsFolder = "target/surefire-reports";
+    }
+
+    @AfterEach
+    void afterEach() {
+        closeBannerIfPresent();  // Закрываем баннер в конце каждого теста
     }
 
     @AfterAll
@@ -72,12 +86,12 @@ public class TestsSoftportal {
 
     public static void closeBannerIfPresent() {
         try {
-            if ($(".fc-button-label").isDisplayed()) {
+            if ($(".fc-button-label").shouldBe(visible, Duration.ofSeconds(1)).exists()) {
                 $(".fc-button-label").click();
-                System.out.println("Баннер закрыт.");
+                System.out.println("✅ Баннер закрыт.");
             }
         } catch (Exception e) {
-            // Баннер отсутствует — продолжаем тест
+            // Баннер отсутствует — ничего не делаем
         }
     }
 
