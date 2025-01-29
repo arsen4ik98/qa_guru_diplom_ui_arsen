@@ -131,7 +131,7 @@ public class TestsSoftportal {
                 $$(".TdLCatTitle").findBy(text("Android")).click()
         );
         step("Поиск корректной проверки'", () ->
-                $(".geo18").shouldHave(text("Программы для Android"))
+                $(".titleH geo18").shouldHave(text("Программы для Android"))
         );
         Attach.addVideo();
         Attach.makeScreenshot();
