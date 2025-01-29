@@ -1,3 +1,4 @@
+import helpers.Attach;
 import org.junit.jupiter.api.*;
 import page.ContactPage;
 import page.StartPage;
@@ -16,6 +17,11 @@ public class TestsSoftportal extends TestsBase {
                 .openMenu()
                 .clickContacts();
         contactPage.searchPhone();
+        Attach.addVideo();
+        Attach.screenshotAs("searchContactsTests");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.getVideoUrl();
     }
 
 

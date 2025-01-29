@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class StartPage {
 
     private SelenideElement vacancy = $(".btn-danger"),
-            headerMenu = $(".menu-icons-right");
+            headerMenu = $(".text-end.d-flex.align-items-center a img");
 
     @Step("Открываем сайт BellIntegrator")
     public StartPage openPage() {
@@ -31,7 +31,7 @@ public class StartPage {
     }
     @Step("Открываем \"Меню\"")
     public StartPage clickContacts() {
-        $(".nav-item").$(byText("Контакты")).click();;
+        $("#block-karera").find(byText("Контакты")).click();;
         return this;
     }
 
