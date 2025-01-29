@@ -17,11 +17,6 @@ public class TestsSoftportal extends TestsBase {
                 .openMenu()
                 .clickContacts();
         contactPage.searchPhone();
-        Attach.addVideo();
-        Attach.screenshotAs("searchContactsTests");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.getVideoUrl();
     }
 
 
