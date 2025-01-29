@@ -1,54 +1,52 @@
 plugins {
     id 'java-library'
-    id("io.qameta.allure") version "2.12.0"
+    id 'io.qameta.allure' version '2.12.0' // Обновлено
 }
 
-repositories {
-    mavenCentral()
-}
 
-def allureVersion = "2.21.0",
-    selenideVersion = "6.19.1"
 
 allure {
     report {
-        version.set("2.29.0")
+        version.set("2.29.0") // Согласованная версия
     }
     adapter {
         aspectjWeaver.set(true)
         frameworks {
             junit5 {
-                adapterVersion.set("2.29.0")
+                adapterVersion.set("2.29.0") // Согласованная версия
             }
         }
     }
 }
 
-dependencies {
-    testImplementation (
-            "com.codeborne:selenide:$selenideVersion",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            'org.slf4j:slf4j-simple:2.0.7',
-            "com.github.javafaker:javafaker:1.0.2",
-            'ch.qos.logback:logback-classic:1.5.6',
-            'io.qameta.allure:allure-selenide:2.29.0',
-            'org.aspectj:aspectjweaver:1.9.20',
-            'io.github.bonigarcia:webdrivermanager:5.5.3',
-            'org.aeonbits.owner:owner:1.0.12',
-            'org.telegram:telegrambots:5.3.0',
-            'org.telegram:telegrambots-spring-boot-starter:5.3.0'
-
-    )
-    testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.10.0')
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
 }
 
-tasks.withType(JavaCompile) {
+java {
+    toolchain {
+        sourceCompatibility = '17'
+        targetCompatibility = '17'
+    }
+}
+
+compileTestJava {
     options.encoding = 'UTF-8'
 }
 
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:6.19.1",
+            "org.junit.jupiter:junit-jupiter:5.10.0",
+            'org.slf4j:slf4j-simple:2.0.7',
+            'com.github.javafaker:javafaker:1.0.2',
+            'io.qameta.allure:allure-selenide:2.29.0') // Согласованная версия
+}
+
 tasks.withType(Test) {
-    useJUnitPlatform()
     systemProperties(System.getProperties())
+    useJUnitPlatform()
 
     testLogging {
         lifecycle {
@@ -58,8 +56,8 @@ tasks.withType(Test) {
     }
 }
 
-task softportal_test(type: Test) {
-    useJUnitPlatform{
-        includeTags("softportal_test")
+task  bi_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("bi_test")
     }
 }

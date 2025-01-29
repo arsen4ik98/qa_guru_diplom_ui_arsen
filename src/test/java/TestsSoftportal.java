@@ -1,149 +1,26 @@
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import config.CredentialsConfig;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import testdata.Attach;
+import page.ContactPage;
+import page.StartPage;
 
-import java.time.Duration;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
-import static io.qameta.allure.Allure.step;
+public class TestsSoftportal extends TestsBase {
 
-public class TestsSoftportal {
+    StartPage startPage = new StartPage();
+    ContactPage contactPage = new ContactPage();
 
-    static CredentialsConfig config;
-    static ExecutorService executor;
-    @BeforeAll
-    static void beforeAll() {
-        config = ConfigFactory.create(CredentialsConfig.class);
-        String browserVersion = System.getProperty("version", "126.0");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
-        String remoteUrl = System.getProperty("remoteBrowserUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
-        //Configuration.baseUrl = "https://www.softportal.com";
-        Configuration.baseUrl = "https://www.leagueofgraphs.com/ru";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = remoteUrl;
-        Configuration.browserVersion = browserVersion;
-        Configuration.timeout = 10000;
-
-        executor = Executors.newSingleThreadExecutor();
-        executor.submit(() -> {
-            while (!Thread.currentThread().isInterrupted()) {
-                try {
-                    closePrivacyPopup(); // Закрываем баннер "Manage your privacy"
-                    Thread.sleep(1000); // Проверяем каждую секунду
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-        });
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
-
-        System.out.println("Remote URL: " + remoteUrl);
-        System.out.println("Browser: " + Configuration.browser);
-        System.out.println("Browser version: " + Configuration.browserVersion);
-        System.out.println("Window size: " + Configuration.browserSize);
-    }
-
-    @AfterAll
-    static void tearDown() {
-        if (executor != null) {
-            executor.shutdownNow(); // Останавливаем поток
-        }
-        closeWebDriver();
-    }
-
-    public static void closePrivacyPopup() {
-        try {
-            if ($("div[role='dialog']").shouldBe(visible, Duration.ofSeconds(1)).exists()) {
-                $("button:contains('Accept All'), button:contains('Got it'), button:contains('Принять')").click();
-                System.out.println("✅ Закрыли баннер 'Manage your privacy'.");
-            }
-        } catch (Exception e) {
-            // Баннер не найден — продолжаем тест
-        }
-    }
-
+    @DisplayName("Поиск Контакты")
+    @Tag("bi_test")
     @Test
-    @Tag("softportal_test")
-    void checkSearch() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-        step("Открыть главную страницу", () ->
-                open("/")
-        );
-        step("Проверить наличие заголовка 'SoftPortal'", () ->
-                $("#str").setValue("Google Chrome")
-        );
-        step("Кликнуть на кнопку 'Поиск'", () ->
-                $("[alt='Искать']").click()
-        );
-        step("Поиск корректной проверки'", () ->
-                $(".searchResults").shouldHave(text("Google Chrome – один из самых популярных браузеров"))
-        );
-        Attach.addVideo();
-        Attach.makeScreenshot();
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        System.out.println("Remote URL: " + config.remote());
+    void searchContactsTests(){
+        startPage.openPage()
+                .openMenu()
+                .clickContacts();
+        contactPage.searchPhone();
     }
 
-    @Test
-    @Tag("softportal_test")
-    void checkCategoryAndroid() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-        step("Открыть главную страницу", () ->
-                open("/")
-        );
-        step("Перейти на категорию 'Android'", () ->
-                //$$(".TdLCatTitle").findBy(text("Android")).click()
-                $(".search_field").setValue("ShadowSensey")
-        );
-        step("Поиск корректной проверки'", () ->
-                //$("titleH geo18").shouldHave(text("Программы для Android"))
-                $(".search_button").click()
-        );
-        step("Поиск корректной проверки'", () ->
-                //$("titleH geo18").shouldHave(text("Программы для Android"))
-                $(".name").shouldHave(text("ShadowSensey"))
-        );
-        Attach.addVideo();
-        Attach.makeScreenshot();
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        System.out.println("Remote URL: " + config.remote());
-    }
 
-    @Test
-    @Tag("softportal_test")
-    void checkPopularSize() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-        step("Открыть главную страницу", () ->
-                open("/")
-        );
 
-        step("Поиск корректной проверки'", () ->
-                $$("div.rightContainerLinks > div").shouldHave(size(20), Duration.ofSeconds(10))
-        );
-        Attach.addVideo();
-        Attach.makeScreenshot();
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        System.out.println("Remote URL: " + config.remote());
-    }
+
+
+
 }
