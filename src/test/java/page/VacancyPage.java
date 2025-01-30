@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class VacancyPage {
 
-    @Step("Ищем контактный телефон")
+    @Step("Ищем название страницы")
     public VacancyPage vacancyPageText() {
         $(".view-header").shouldHave(text("Вакансии"));
         return this;
