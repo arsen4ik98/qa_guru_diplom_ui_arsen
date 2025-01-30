@@ -80,7 +80,7 @@ clean bi_test
 ```
 ___
 <a id="allure"></a>
-## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/C31-SerzhSH-java_17_axenix/13/allure/)</a>
+## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/qa_guru_hw14_arsen/17/allure/)</a>
 ___
 
 ### *Основная страница отчёта*
@@ -92,7 +92,7 @@ ___
 ### *Тест-кейсы*
 
 <p align="center">  
-<img title="Allure Tests" src="images/screen/Screenshot_1.png" width="850">  
+<img title="Allure Tests" src="images/screen/1.png" width="850">  
 </p>
 
 ### *Графики*
@@ -112,7 +112,10 @@ ____
 </p>
 
 ____
-<a id="video"></a>
+<p align="center">  
+<img title="Video Tests" src="images/video/1.mp4" width="550">  
+</p>
+
 ## <img alt="Selenoid" height="25" src="images/logo/Selenoid.svg" width="25"/></a> Примеры видео выполнения тестов на Selenoid
 ____
 <p align="center">
