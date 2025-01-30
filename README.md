@@ -92,7 +92,7 @@ ___
 ### *Тест-кейсы*
 
 <p align="center">  
-<img title="Allure Tests" src="images/screen/1.png" width="850">  
+<img title="Allure Tests" src="images/screen/3.png" width="850">  
 </p>
 
 ### *Графики*
@@ -112,12 +112,8 @@ ____
 </p>
 
 ____
-<p align="center">  
-<img title="Video Tests" src="images/video/1.mp4" width="550">  
-</p>
-
 ## <img alt="Selenoid" height="25" src="images/logo/Selenoid.svg" width="25"/></a> Примеры видео выполнения тестов на Selenoid
 ____
 <p align="center">
-<img title="Selenoid Video" src="images/video/1.gif" width="550" height="350"  alt="video">   
+<img title="Selenoid Video" src="images/video/1.mp4" width="550" height="350"  alt="video">   
 </p>
