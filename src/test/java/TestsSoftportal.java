@@ -4,7 +4,7 @@ import page.ContactPage;
 import page.SearchPage;
 import page.StartPage;
 import page.VacancyPage;
-
+@Tag("bi_test")
 public class TestsSoftportal extends TestsBase {
 
     StartPage startPage = new StartPage();
@@ -13,7 +13,6 @@ public class TestsSoftportal extends TestsBase {
     SearchPage searchPage = new SearchPage();
 
     @DisplayName("Поиск Контакты")
-    @Tag("bi_test")
     @Test
     void searchContactsTests(){
         startPage.openPage()
@@ -23,7 +22,6 @@ public class TestsSoftportal extends TestsBase {
     }
 
     @DisplayName("Переход на сайт Вакансии")
-    @Tag("bi_test")
     @Test
     void searchVacancyTests(){
         startPage.openPage()
@@ -32,7 +30,6 @@ public class TestsSoftportal extends TestsBase {
     }
 
     @DisplayName("Поиск горячих вакансии")
-    @Tag("bi_test")
     @Test
     void searchGoryacheeVacancyTests(){
         startPage.openPage()
@@ -43,7 +40,6 @@ public class TestsSoftportal extends TestsBase {
     }
 
     @DisplayName("Поиск удаленных вакансии")
-    @Tag("bi_test")
     @Test
     void searchUdalennoVacancyTests(){
         startPage.openPage()
@@ -54,7 +50,6 @@ public class TestsSoftportal extends TestsBase {
     }
 
     @DisplayName("Проверка поиска по странице")
-    @Tag("bi_test")
     @Test
     void searchResultsTest(){
         String search = "Тестирование";
