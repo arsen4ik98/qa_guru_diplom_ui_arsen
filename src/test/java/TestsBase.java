@@ -2,25 +2,29 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import helpers.Attach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import config.WebDriverConfig;
 
 import java.util.Map;
 
 public class TestsBase {
+    static WebDriverConfig config;
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = "https://bellintegrator.ru/";
+
+        config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+        Configuration.baseUrl = config.getBaseUrl();
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = false;
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion");
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.remote = System.getProperty("remoteUrl");
+        Configuration.browser = config.browser();
+        Configuration.browserSize = config.browserSize();
+        Configuration.remote = config.remoteUrl();
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

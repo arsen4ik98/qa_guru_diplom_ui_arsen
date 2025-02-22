@@ -1,11 +1,14 @@
-import helpers.Attach;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 import page.ContactPage;
 import page.SearchPage;
 import page.StartPage;
 import page.VacancyPage;
+
 @Tag("bi_test")
-public class TestsSoftportal extends TestsBase {
+@Owner("arsen4ik98")
+
+public class TestBellIntegrator extends TestsBase {
 
     StartPage startPage = new StartPage();
     ContactPage contactPage = new ContactPage();
@@ -39,6 +42,26 @@ public class TestsSoftportal extends TestsBase {
         vacancyPage.checkboxGoryachee();
     }
 
+    @DisplayName("Поиск по специализации")
+    @Test
+    void searchSpecializationVacancyTests(){
+        startPage.openPage()
+                .clickVacancy();
+        vacancyPage.clickToSpecializationBtn()
+                .chooseSpecializationOption("Вакансии тестировщиков")
+                .clickSearch();
+    }
+
+    @DisplayName("Поиск по Локации")
+    @Test
+    void searchLocationVacancyTests(){
+        startPage.openPage()
+                .clickVacancy();
+        vacancyPage.clickToLocationBtn()
+                .chooseLocationOption("Москва")
+                .clickSearch();
+    }
+
     @DisplayName("Поиск удаленных вакансии")
     @Test
     void searchUdalennoVacancyTests(){
@@ -49,6 +72,7 @@ public class TestsSoftportal extends TestsBase {
         vacancyPage.checkboxUdalenno();
     }
 
+
     @DisplayName("Проверка поиска по странице")
     @Test
     void searchResultsTest(){
@@ -58,10 +82,4 @@ public class TestsSoftportal extends TestsBase {
                 .setValueSearch(search);
         searchPage.searchResults(search);
     }
-
-
-
-
-
-
 }
