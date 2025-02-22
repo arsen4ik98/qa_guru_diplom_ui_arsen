@@ -1,3 +1,5 @@
+package tests;
+
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 import page.ContactPage;
