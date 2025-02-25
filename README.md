@@ -106,6 +106,15 @@ ___
 </p>
 
 ____
+<a id="testops"></a>
+## <img alt="Allure" height="25" src="images/logo/Allure2.svg" width="25"/></a> Интеграция с Allure TestOps
+____
+### *Allure TestOps Запуски*
+<p align="center">  
+<img title="Allure Graphics" src="images/screen/7.png" width="850">
+</p>
+
+____
 <a id="telegram"></a>
 ## <img alt="Allure" height="25" src="images/logo/Telegram.svg" width="25"/></a> Уведомление в Telegram при помощи бота
 ____
