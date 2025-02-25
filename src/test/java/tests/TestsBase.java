@@ -26,8 +26,14 @@ public class TestsBase {
         Configuration.holdBrowserOpen = false;
         Configuration.browser = config.browser();
         Configuration.browserSize = config.browserSize();
+        Configuration.browserVersion = config.browserVersion();
         Configuration.remote = config.remoteUrl();
 
+        if (config.isRemote()) {
+            Configuration.remote = config.remoteUrl();
+        } else {
+            Configuration.remote = null; // Локальный запуск
+        }
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
