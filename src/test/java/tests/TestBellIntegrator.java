@@ -17,7 +17,7 @@ public class TestBellIntegrator extends TestsBase {
     VacancyPage vacancyPage = new VacancyPage();
     SearchPage searchPage = new SearchPage();
 
-    @DisplayName("Поиск Контакты")
+    @DisplayName("Проверка поиска Контакты")
     @Test
     void searchContactsTests(){
         startPage.openPage()
@@ -26,7 +26,7 @@ public class TestBellIntegrator extends TestsBase {
         contactPage.searchPhone();
     }
 
-    @DisplayName("Переход на сайт Вакансии")
+    @DisplayName("Проверка перехода на сайт Вакансии")
     @Test
     void searchVacancyTests(){
         startPage.openPage()
@@ -34,7 +34,7 @@ public class TestBellIntegrator extends TestsBase {
         vacancyPage.vacancyPageText();
     }
 
-    @DisplayName("Поиск горячих вакансии")
+    @DisplayName("Проверка поиска горячих вакансии")
     @Test
     void searchGoryacheeVacancyTests(){
         startPage.openPage()
@@ -44,7 +44,7 @@ public class TestBellIntegrator extends TestsBase {
         vacancyPage.checkboxGoryachee();
     }
 
-    @DisplayName("Поиск по специализации")
+    @DisplayName("Проверка поиска по специализации")
     @Test
     void searchSpecializationVacancyTests(){
         startPage.openPage()
@@ -54,7 +54,7 @@ public class TestBellIntegrator extends TestsBase {
                 .clickSearch();
     }
 
-    @DisplayName("Поиск по Локации")
+    @DisplayName("Проверка поиска по Локации")
     @Test
     void searchLocationVacancyTests(){
         startPage.openPage()
@@ -64,7 +64,7 @@ public class TestBellIntegrator extends TestsBase {
                 .clickSearch();
     }
 
-    @DisplayName("Поиск удаленных вакансии")
+    @DisplayName("Проверка поиска удаленных вакансии")
     @Test
     void searchUdalennoVacancyTests(){
         startPage.openPage()
