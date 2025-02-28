@@ -11,17 +11,18 @@ import static com.codeborne.selenide.Selenide.*;
 public class StartPage {
 
     private ElementsCollection vacancy = $$(".container-fluid a");
-    private SelenideElement  headerMenu = $(".text-end.d-flex.align-items-center a img"),
+    private SelenideElement headerMenu = $(".text-end.d-flex.align-items-center a img"),
             filtervacancy = $(".nav-item-vac"),
-    exposed_form = $(".views-exposed-form"),
-    search_open = $("#search-open"),
-    seach_value = $("[name='search']");
+            exposed_form = $(".views-exposed-form"),
+            search_open = $("#search-open"),
+            seach_value = $("[name='search']");
 
     @Step("Открываем сайт BellIntegrator")
     public StartPage openPage() {
         open("");
         return this;
     }
+
     @Step("Открываем \"Меню\"")
     public StartPage openMenu() {
         headerMenu.click();
@@ -60,7 +61,7 @@ public class StartPage {
 
     @Step("Нажимаем кнопку \"Найти\"")
     public StartPage searchVacancy() {
-       exposed_form.find(byText("Найти")).click();;
+        exposed_form.find(byText("Найти")).click();
         return this;
     }
 
@@ -74,10 +75,9 @@ public class StartPage {
 
     @Step("Переходим в \"Контакты\"")
     public StartPage clickContacts() {
-        $("#block-karera").find(byText("Контакты")).click();;
+        $("#block-karera").find(byText("Контакты")).click();
         return this;
     }
-
 
 
 }

@@ -62,6 +62,7 @@ public class TestsBase {
         Attach.addVideo();
 
     }
+
     @AfterEach
     void afterEach() {
         Selenide.closeWebDriver();

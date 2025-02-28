@@ -19,7 +19,7 @@ public class TestBellIntegrator extends TestsBase {
 
     @DisplayName("Проверка поиска Контакты")
     @Test
-    void searchContactsTests(){
+    void searchContactsTests() {
         startPage.openPage()
                 .openMenu()
                 .clickContacts();
@@ -28,7 +28,7 @@ public class TestBellIntegrator extends TestsBase {
 
     @DisplayName("Проверка перехода на сайт Вакансии")
     @Test
-    void searchVacancyTests(){
+    void searchVacancyTests() {
         startPage.openPage()
                 .clickVacancy();
         vacancyPage.vacancyPageText();
@@ -36,7 +36,7 @@ public class TestBellIntegrator extends TestsBase {
 
     @DisplayName("Проверка поиска горячих вакансии")
     @Test
-    void searchGoryacheeVacancyTests(){
+    void searchGoryacheeVacancyTests() {
         startPage.openPage()
                 .openFilterVacancy()
                 .checkGoryaachee()
@@ -46,7 +46,7 @@ public class TestBellIntegrator extends TestsBase {
 
     @DisplayName("Проверка поиска по специализации")
     @Test
-    void searchSpecializationVacancyTests(){
+    void searchSpecializationVacancyTests() {
         startPage.openPage()
                 .clickVacancy();
         vacancyPage.clickToSpecializationBtn()
@@ -56,7 +56,7 @@ public class TestBellIntegrator extends TestsBase {
 
     @DisplayName("Проверка поиска по Локации")
     @Test
-    void searchLocationVacancyTests(){
+    void searchLocationVacancyTests() {
         startPage.openPage()
                 .clickVacancy();
         vacancyPage.clickToLocationBtn()
@@ -66,7 +66,7 @@ public class TestBellIntegrator extends TestsBase {
 
     @DisplayName("Проверка поиска удаленных вакансии")
     @Test
-    void searchUdalennoVacancyTests(){
+    void searchUdalennoVacancyTests() {
         startPage.openPage()
                 .openFilterVacancy()
                 .checkUdalenno()
@@ -77,7 +77,7 @@ public class TestBellIntegrator extends TestsBase {
 
     @DisplayName("Проверка поиска по странице")
     @Test
-    void searchResultsTest(){
+    void searchResultsTest() {
         String search = "Тестирование";
         startPage.openPage()
                 .opensearch()

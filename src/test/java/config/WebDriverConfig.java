@@ -2,12 +2,11 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({
-        "classpath:${env}.properties",// Использует файл, указанный через переменную окружения "env"
+@Config.Sources({"classpath:${env}.properties",// Использует файл, указанный через переменную окружения "env"
         "classpath:local.properties"   // Файл по умолчанию, если "env" не передан или файл не найден
 })
 
-public interface WebDriverConfig extends Config{
+public interface WebDriverConfig extends Config {
     @Key("baseUrl")
     @DefaultValue("https://bellintegrator.ru/")
     String getBaseUrl();
