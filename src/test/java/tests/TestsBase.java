@@ -31,8 +31,6 @@ public class TestsBase {
 
         if (config.isRemote()) {
             Configuration.remote = config.remoteUrl();
-        } else {
-            Configuration.remote = null; // Локальный запуск
         }
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
