@@ -2,6 +2,8 @@ package tests;
 
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import page.ContactPage;
 import page.SearchPage;
 import page.StartPage;
@@ -75,29 +77,9 @@ public class TestBellIntegrator extends TestsBase {
     }
 
     @DisplayName("Проверка поиска по странице")
-    @Test
-    void searchResultsTest() {
-        String search = "тестирование";
-        startPage.openPage()
-                .opensearch()
-                .setValueSearch(search);
-        searchPage.searchResults(search);
-    }
-
-    @DisplayName("Проверка поиска по странице, игнорируя регистр")
-    @Test
-    void searchResultsTestWithCapital() {
-        String search = "ТЕСТИРОВАНИЕ";
-        startPage.openPage()
-                .opensearch()
-                .setValueSearch(search);
-        searchPage.searchResults(search);
-    }
-
-    @DisplayName("Проверка поиска по странице, игнорируя с разными регистрами")
-    @Test
-    void searchResultsTestWithCapitalAndLower() {
-        String search = "ТеСтИРоВаНиЕ";
+    @ParameterizedTest
+    @ValueSource(strings = {"тестирование", "ТЕСТИРОВАНИЕ", "ТеСтИРоВаНиЕ"})
+    void searchResultsTest(String search) {
         startPage.openPage()
                 .opensearch()
                 .setValueSearch(search);
