@@ -5,7 +5,6 @@ build/
 !**/src/test/**
 .idea
 .gradle
-build.gradle
 target/
 
 
