@@ -94,7 +94,7 @@ public class TestBellIntegrator extends TestsBase {
         searchPage.searchResults(search);
     }
 
-    @DisplayName("Проверка поиска по странице, игнорируя регистр")
+    @DisplayName("Проверка поиска по странице, игнорируя с разными регистрами")
     @Test
     void searchResultsTestWithCapitalAndLower() {
         String search = "ТеСтИРоВаНиЕ";
