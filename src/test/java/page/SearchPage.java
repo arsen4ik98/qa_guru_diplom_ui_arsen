@@ -1,19 +1,19 @@
 package page;
 
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.CollectionCondition.allMatch;
+import static com.codeborne.selenide.Selenide.*;
 
 public class SearchPage {
 
-    private SelenideElement searchResults = $(".search-results");
+    private ElementsCollection searchResults = $$(".search-results .search-result__snippet");
 
     @Step("Результат поиска")
     public SearchPage searchResults(String search) {
-        searchResults.shouldHave(text(search));
+        searchResults.shouldHave(allMatch(search,
+                element -> element.getText().toLowerCase().contains(search.toLowerCase())));
         return this;
     }
-
 }

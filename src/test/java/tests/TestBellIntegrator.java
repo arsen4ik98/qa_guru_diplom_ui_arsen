@@ -74,11 +74,30 @@ public class TestBellIntegrator extends TestsBase {
         vacancyPage.checkboxUdalenno();
     }
 
-
     @DisplayName("Проверка поиска по странице")
     @Test
     void searchResultsTest() {
-        String search = "Тестирование";
+        String search = "тестирование";
+        startPage.openPage()
+                .opensearch()
+                .setValueSearch(search);
+        searchPage.searchResults(search);
+    }
+
+    @DisplayName("Проверка поиска по странице, игнорируя регистр")
+    @Test
+    void searchResultsTestWithCapital() {
+        String search = "ТЕСТИРОВАНИЕ";
+        startPage.openPage()
+                .opensearch()
+                .setValueSearch(search);
+        searchPage.searchResults(search);
+    }
+
+    @DisplayName("Проверка поиска по странице, игнорируя регистр")
+    @Test
+    void searchResultsTestWithCapitalAndLower() {
+        String search = "ТеСтИРоВаНиЕ";
         startPage.openPage()
                 .opensearch()
                 .setValueSearch(search);
