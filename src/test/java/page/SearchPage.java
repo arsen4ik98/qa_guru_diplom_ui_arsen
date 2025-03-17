@@ -18,13 +18,4 @@ public class SearchPage {
                 element -> element.getText().toLowerCase().contains(search.toLowerCase())));
         return this;
     }
-
-   /*@Step("Результат поиска")
-    public SearchPage searchFirstResult(String search) {
-        WebElement firstResult = driver.findElement(By.cssSelector("h3.search-result__title a"));
-        return this;
-    }
-
-    */
-
 }
