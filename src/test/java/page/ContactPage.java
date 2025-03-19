@@ -11,7 +11,7 @@ public class ContactPage {
     private SelenideElement contact = $(".mx-3");
 
     @Step("Ищем контактный телефон")
-    public ContactPage searchPhone() {
+    public ContactPage checkPhone() {
         contact.shouldHave(text("тел: +7 (495) 980-61-81"));
         return this;
     }

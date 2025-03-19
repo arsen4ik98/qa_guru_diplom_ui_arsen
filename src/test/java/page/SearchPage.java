@@ -13,7 +13,7 @@ public class SearchPage {
     private ElementsCollection searchResults = $$(".search-results .search-result__snippet");
 
     @Step("Результат поиска")
-    public SearchPage searchResults(String search) {
+    public SearchPage checkSearchResults(String search) {
         searchResults.shouldHave(allMatch(search,
                 element -> element.getText().toLowerCase().contains(search.toLowerCase())));
         return this;

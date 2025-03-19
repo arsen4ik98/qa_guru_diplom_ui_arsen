@@ -25,7 +25,7 @@ public class TestBellIntegrator extends TestsBase {
         startPage.openPage()
                 .openMenu()
                 .clickContacts();
-        contactPage.searchPhone();
+        contactPage.checkPhone();
     }
 
     @DisplayName("Проверка перехода на сайт Вакансии")
@@ -83,6 +83,6 @@ public class TestBellIntegrator extends TestsBase {
         startPage.openPage()
                 .opensearch()
                 .setValueSearch(search);
-        searchPage.searchResults(search);
+        searchPage.checkSearchResults(search);
     }
 }
