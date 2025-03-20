@@ -11,6 +11,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import config.WebDriverConfig;
+import config.ConfigProvider;
+
 
 import java.util.Map;
 
@@ -19,8 +21,8 @@ public class TestsBase {
 
     @BeforeAll
     static void beforeAll() {
-
-        config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+        config = ConfigProvider.CONFIG;
+        //config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = false;
